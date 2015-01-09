@@ -35,6 +35,8 @@ src_compile() {
 }
 
 src_install() {
-	cp -a "share" "${D}/usr/"
+	#cp -a "share" "${D}/usr/"
 	distutils_src_install || die
+	emake DESTDIR="${D}" install
+	dodoc README COPYING
 }
