@@ -11,6 +11,8 @@ SRC_URI="
 	amd64?	( https://download-cdn.getsyncapp.com/${PV}/linux-x64/BitTorrent-Sync_x64.tar.gz )
 	x86? ( https://download-cdn.getsyncapp.com/${PV}/linux-i386/BitTorrent-Sync_i386.tar.gz )"
 
+IUSE="logrotate"
+
 RESTRICT="mirror strip"
 LICENSE="BitTorrent"
 SLOT="0"
@@ -46,6 +48,12 @@ src_install() {
 	# make log-dir
 	keepdir /var/log/btsync
 	fowners btsync:btsync /var/log/btsync
+
+    # logrotate ?
+	if use logrotate; then
+		insinto /etc/logrotate.d
+		newins "${FILESDIR}/btsync.logrotate" btsync
+	fi
 }
 
 pkg_postinst() {
