@@ -1,0 +1,7 @@
+/var/log/btsync/*.log {
+    copytruncate
+    compress
+    notifempty
+    missingok
+    sharedscripts
+}

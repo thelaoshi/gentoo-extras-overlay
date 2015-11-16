@@ -24,7 +24,7 @@ start() {
 			  ${SYNC_UID:+--user "${SYNC_UID}"} \
 			  ${SYNC_GID:+--group "${SYNC_GID}"} \
 			  ${SYNC_UMASK:+--umask "${SYNC_UMASK}"} \
-			  -- ${SYNC_OPTS} --log=${SYNC_LOGFILE}
+			  -- ${SYNC_OPTS} --log ${SYNC_LOGFILE}
 
 	eend $?
 }
